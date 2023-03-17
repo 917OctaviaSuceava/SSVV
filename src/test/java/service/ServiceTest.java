@@ -40,8 +40,8 @@ class ServiceTest {
         assertEquals(0, result);
     }
     @Test
-    void testSaveStudentNegativeId() {
-        var student = new Student("-1", "Ion", 931);
+    void testSaveStudentNullId() {
+        var student = new Student("", "Ion", 931);
         var result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
         assertEquals(1, result);
     }
