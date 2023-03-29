@@ -62,8 +62,12 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
             Element root = XMLdocument.createElement("Entitati");
             XMLdocument.appendChild(root);
 
-            entities.values().forEach(entity -> root.appendChild(getElementFromEntity(entity, XMLdocument)));
-            Transformer XMLtransformer = TransformerFactory.newInstance().newTransformer();
+            for (E entity : entities.values()) {
+                // Call the 'getElementFromEntity' method to create an element from the current entity
+                Element element = getElementFromEntity(entity, XMLdocument);
+                // Append the newly created element to the root of the XML document
+                root.appendChild(element);
+            }            Transformer XMLtransformer = TransformerFactory.newInstance().newTransformer();
             XMLtransformer.setOutputProperty(OutputKeys.INDENT, "yes");
             XMLtransformer.transform(new DOMSource(XMLdocument), new StreamResult(XMLfilename));
         }

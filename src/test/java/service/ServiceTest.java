@@ -35,14 +35,14 @@ class ServiceTest {
 
     @Test
     void testSaveStudent() {
-        var student = new Student("1", "Ion", 931);
-        var result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        Student student = new Student("1", "Ion", 931);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
         assertEquals(0, result);
     }
     @Test
     void testSaveStudentNullId() {
-        var student = new Student("", "Ion", 931);
-        var result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        Student student = new Student("", "Ion", 931);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
         assertEquals(1, result);
     }
 }
