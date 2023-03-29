@@ -46,5 +46,35 @@ class ServiceTest {
         assertEquals(1, result);
     }
 
+    @Test
+    //test for null name
+    void testSaveStudentNullName() {
+        Student student = new Student("1", "", 931);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        assertEquals(1, result);
+    }
+
+    @Test
+    //test for null group
+    void testSaveStudentNullGroup() {
+        Student student = new Student("1", "Ion", 0);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        assertEquals(1, result);
+    }
+
+    @Test
+    //test for -1 group
+    void testSaveStudentMinusOneGroup() {
+        Student student = new Student("1", "Ion", -1);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        assertEquals(1, result);
+    }
+
+    @Test
+    void testSavingNullStudent() {
+        Student student = new Student(null, null, 0);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        assertEquals(1, result);
+    }
 
 }
