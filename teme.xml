@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Entitati>
+    <tema ID="99">
+        <Descriere>temaaa</Descriere>
+        <Deadline>5</Deadline>
+        <Startline>3</Startline>
+    </tema>
     <tema ID="1">
         <Descriere>File</Descriere>
         <Deadline>7</Deadline>
@@ -24,5 +29,10 @@
         <Descriere>something</Descriere>
         <Deadline>4</Deadline>
         <Startline>2</Startline>
+    </tema>
+    <tema ID="98">
+        <Descriere>a</Descriere>
+        <Deadline>2</Deadline>
+        <Startline>1</Startline>
     </tema>
 </Entitati>

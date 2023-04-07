@@ -1,6 +1,7 @@
 package service;
 
 import domain.Student;
+import domain.Tema;
 import org.junit.Test;
 import repository.NotaXMLRepository;
 import repository.StudentXMLRepository;
@@ -24,6 +25,24 @@ public class ServiceTest {
 
 
         this.service = new Service(studentXMLRepository, temaXMLRepository, notaXMLRepository);
+    }
+    
+    @Test
+    public void testCaseTema1()
+    {
+        this.setUp();
+        Tema tema = new Tema("98", "a", 2, 1);
+        int result = service.saveTema(tema.getID(), tema.getDescriere(), tema.getDeadline(), tema.getStartline());
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testCaseTema2()
+    {
+        this.setUp();
+        Tema tema = new Tema("", "a", 2, 1);
+        int result = service.saveTema(tema.getID(), tema.getDescriere(), tema.getDeadline(), tema.getStartline());
+        assertEquals(1, result);
     }
 
     @Test
