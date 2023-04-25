@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: service.ServiceTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.334 s <<< FAILURE! - in service.ServiceTest
+testSavingNullStudent(service.ServiceTest)  Time elapsed: 0.014 s  <<< ERROR!
+java.lang.NullPointerException
+	at service.ServiceTest.testSavingNullStudent(ServiceTest.java:74)
+

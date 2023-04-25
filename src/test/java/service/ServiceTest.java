@@ -88,10 +88,31 @@ public class ServiceTest {
     }
 
     @Test
+    public void testSaveStudentMinusOneId() {
+        this.setUp();
+        Student student = new Student("-1", "Ion", -1);
+        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
+        assertEquals(1, result);
+    }
+
+    @Test
     public void testSavingNullStudent() {
         Student student = new Student(null, null, 0);
         int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
         assertEquals(1, result);
     }
 
+    @Test
+    public void testSavingTema() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", 2, 1);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testSavingTemaNullId() {
+        this.setUp();
+        int result = this.service.saveTema("", "descriere", 2, 1);
+        assertEquals(1, result);
+    }
 }
