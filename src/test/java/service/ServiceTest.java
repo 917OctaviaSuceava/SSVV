@@ -26,24 +26,6 @@ public class ServiceTest {
 
         this.service = new Service(studentXMLRepository, temaXMLRepository, notaXMLRepository);
     }
-    
-    @Test
-    public void testCaseTema1()
-    {
-        this.setUp();
-        Tema tema = new Tema("98", "a", 2, 1);
-        int result = service.saveTema(tema.getID(), tema.getDescriere(), tema.getDeadline(), tema.getStartline());
-        assertEquals(1, result);
-    }
-
-    @Test
-    public void testCaseTema2()
-    {
-        this.setUp();
-        Tema tema = new Tema("", "a", 2, 1);
-        int result = service.saveTema(tema.getID(), tema.getDescriere(), tema.getDeadline(), tema.getStartline());
-        assertEquals(1, result);
-    }
 
     @Test
     public void testSaveStudent() {
@@ -96,13 +78,6 @@ public class ServiceTest {
     }
 
     @Test
-    public void testSavingNullStudent() {
-        Student student = new Student(null, null, 0);
-        int result = this.service.saveStudent(student.getID(), student.getNume(), student.getGrupa());
-        assertEquals(1, result);
-    }
-
-    @Test
     public void testSavingTema() {
         this.setUp();
         int result = this.service.saveTema("1", "descriere", 2, 1);
@@ -110,9 +85,73 @@ public class ServiceTest {
     }
 
     @Test
-    public void testSavingTemaNullId() {
+    public void testSavingTemaEmptyId() {
         this.setUp();
         int result = this.service.saveTema("", "descriere", 2, 1);
         assertEquals(1, result);
     }
+
+    @Test
+    public void testSavingTemaNullId() {
+        this.setUp();
+        int result = this.service.saveTema(null, "descriere", 2, 1);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaEmptyDescription() {
+        this.setUp();
+        int result = this.service.saveTema("1", "", 2 , 1);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaNullDescription() {
+        this.setUp();
+        int result = this.service.saveTema("1", null, 2 , 1);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaMinusOneDeadline() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", -1, 1);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaDeadlineGreaterThan14() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", 15, 1);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaDeadlineLessThanStartline() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", 2, 3);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaMinusOneStartline() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", 2, -1);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaGreaterThan14Startline() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", 16, 15);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testSavingTemaGreaterStartlineThanDeadline() {
+        this.setUp();
+        int result = this.service.saveTema("1", "descriere", 3, 4);
+        assertEquals(1, result);
+    }
+
 }
